@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body >
+    <div class="text">Here is the recursion exercise page</div>
+    <button class="text bg-blue-500 px-5 py-2 rounded text-white mx-auto">Perform recursion</button>
+    <div class="text" id="display"></div>
+    <script>
+        // let myArray = [];
+        // const recursiveFunctions = (e) => {
+        //     if(e > 5) return;
+        //     myArray.push(e);
+        //     console.log(myArray);
+        //     return recursiveFunctions(e + 1);
+        // }
+        // recursiveFunctions(1);
+
+        // const nonRecursiveFunctions = (event) => {
+        //     for (let index = event; index <= 5; index++) {
+        //         const element = index;
+        //         myArray.push(element);
+        //         console.log(myArray);   
+        //     }
+        // };
+        // nonRecursiveFunctions(1);
+        
+
+        // Recursion
+        // const A = () => {
+        //     const greetings = "Hello " + B();
+        //     console.log(greetings);
+        //     return greetings;
+        // };
+        // const B = () => {
+        //     return "my " + C();
+        // };
+        // const C = () => {
+        //     return "friends.";
+        // };
+
+        // A();
+
+        // String reversal
+        // const stringReversal = (event) => {
+        //     if (event === ""){
+        //         return "";
+        //     };
+        //     let recursionCount = stringReversal(event.substring(1)) + event[0];
+        //     console.log(recursionCount);
+        //     return recursionCount;
+        // };
+        // display.innerHTML = stringReversal("the simple engineer");
+        // stringReversal("the simple engineer");
+
+
+        // Palindrome
+        const isPalindrome = (value) => {
+            if(value.length == 0 || value.length == 1) {
+                return true;
+            }
+
+            if(value[0] === value[value.length - 1]){
+                let isPalindromeValue = isPalindrome(value.substring(1, value.length - 1)); 
+                console.log(isPalindromeValue);
+              return isPalindromeValue;
+            }
+
+            return false;
+        }
+        isPalindrome("racecar");
+    </script>
+</body>
+</html>

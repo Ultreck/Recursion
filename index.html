@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-300">
+    <div class="text flex w-full min-h-screen h-auto justify-center py-10 bg-slate-300">
+        <div class="text w-full">
+            <div class="text w-1/3 mt-10 p-10 shadow-lg  rounded bg-slate-100 h-60 mx-auto">
+                <div class="text mt-10" id="">
+                    <input type="text" class="text w-full py-1 px-3 rounded focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" id="inp1" placeholder="add item">
+                    <small class="text-red-500 font-normal" id="small"></small>
+                    <button class="text-white mt-5 bg-blue-500 hover:bg-blue-600s w-full" id="addbtn" onclick="handleAddTodo()">Add Task</button>
+                    <button class="text-white mt-5 bg-green-500 hover:bg-green-600 w-full hidden" id="upbtn" onclick="handleUpdateTodo()">Update Task</button>
+                </div>
+            </div>
+            <div class="text bg-white w-1/2 mx-auto mt-10  overflow-auto">
+                <h1 class="text-center hidden text-lg mt-3 font-bold" id="header">Task Table</h1>
+                <div class="text flex font-bold mt-2 px-10 hidden -mb-5" id="tablehead">
+                    <span class="text w-20">S/N</span>
+                    <span class="text w-3/6">Todo</span>
+                    <span class="text ">Actions</span>
+                </div>
+                <div class="text" id="display">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+  
+     let todoArray = []; // define an empty array
+     let clickedIndex; 
+
+    // Function handling the add todo
+    const handleAddTodo = () => {
+        // check whether the input has value or not 
+        if(inp1.value) {
+            todoArray.push(inp1.value); //update the array value
+            inp1.value = ""; //set the input value to empty string
+            displayFunction(); //call display function
+            inp1.classList.remove("border", "border-red-500"); //remove border red from input
+            small.innerHTML = ""; // set validation text to empty string
+        }else{
+            inp1.classList.add("border", "border-red-500"); //add border red to the input
+            small.innerHTML = "Please type something"; // add validation text
+        }
+        // check whether the array has value or not
+        if(todoArray.length > 0){
+            display.classList.add("pb-5", "ps-10", "pe-10"); //add other classes to the display
+            header.classList.remove("hidden"); //remove hidden classes from h1
+            tablehead.classList.remove("hidden"); //remove hidden classes 
+        }
+    };
+    
+        //function handling edit buttons
+      const handleEditTodo = (e) => {
+        inp1.value = todoArray[e]; //set clicked item to the input 
+        clickedIndex =  e; //set clicked index globally to be accessible by the update function
+        addbtn.classList.add("hidden"); //add hidden to the add todo button
+        upbtn.classList.remove("hidden"); //remove hidden from the update todo button
+    };
+
+    // funcrion handling update task
+    const handleUpdateTodo = () => {
+        todoArray[clickedIndex] = inp1.value; //set new value to the index of the clicked item
+        addbtn.classList.remove("hidden"); //remove hidden to the add todo button
+        upbtn.classList.add("hidden"); //add hidden from the update todo button
+        inp1.value = ""; //set input value back to empty string
+        displayFunction(); //call display function
+        
+    };
+    
+    // function handling delete todo
+    const handleDeleteTodo = (e) => {
+        todoArray.splice(e, 1); // delete a selected item from array
+        displayFunction(); //call display function
+      };
+
+    //   function handling display.
+      const displayFunction = () => {
+        display.innerHTML = "";
+        for(let i = 0; i < todoArray.length; i++) {
+            display.innerHTML += `<div class="text relative flex px-5 py-1 items-center bg-sky-100 font-semibold mt-5" id="">
+                    <div class="text">${i + 1}. </div>
+                    <div class="text ms-10">${todoArray[i]}</div>
+                    <div class="text ms-10 absolute right-0 gap-5">
+                        <button class="text-white mx-3 bg-blue-500 px-5 hover:bg-blue-600 rounded" id="btn" onclick="handleEditTodo(${i})">Edit</button>
+                        <button class="text-white mx-3 bg-red-500 hover:bg-red-600 px-5 rounded" id="btn" onclick="handleDeleteTodo(${i})">Delete</button>
+                    </div>
+                </div>`;
+        }
+       return display.innerHTML;
+      };
+    </script>
+</body>
+</html>
