@@ -59,20 +59,32 @@
 
 
         // Palindrome
-        const isPalindrome = (value) => {
-            if(value.length == 0 || value.length == 1) {
-                return true;
-            }
+        // const isPalindrome = (value) => {
+        //     if(value.length == 0 || value.length == 1) {
+        //         return true;
+        //     }
 
-            if(value[0] === value[value.length - 1]){
-                let isPalindromeValue = isPalindrome(value.substring(1, value.length - 1)); 
-                console.log(isPalindromeValue);
-              return isPalindromeValue;
-            }
+        //     if(value[0] === value[value.length - 1]){
+        //         let isPalindromeValue = isPalindrome(value.substring(1, value.length - 1)); 
+        //         console.log(isPalindromeValue);
+        //       return isPalindromeValue;
+        //     }
 
-            return false;
-        }
-        isPalindrome("racecar");
+        //     return false;
+        // }
+        // isPalindrome("racecar");
+
+            // Decimal to binary representation
+        const findBinary = (decimal, result) => {
+            if (decimal < 1) {
+                return result;
+            }
+            result = Math.floor(decimal % 2) + result;
+            return findBinary(decimal / 2, result);
+        };
+
+        let binaryResult = findBinary(233, "");
+        console.log(binaryResult);
     </script>
 </body>
 </html>
