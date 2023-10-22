@@ -11,6 +11,7 @@
     <button class="text bg-blue-500 px-5 py-2 rounded text-white mx-auto">Perform recursion</button>
     <div class="text" id="display"></div>
     <script>
+
         // let myArray = [];
         // const recursiveFunctions = (e) => {
         //     if(e > 5) return;
@@ -42,8 +43,9 @@
         // const C = () => {
         //     return "friends.";
         // };
-
         // A();
+
+
 
         // String reversal
         // const stringReversal = (event) => {
@@ -56,6 +58,8 @@
         // };
         // display.innerHTML = stringReversal("the simple engineer");
         // stringReversal("the simple engineer");
+
+
 
 
         // Palindrome
@@ -74,17 +78,43 @@
         // }
         // isPalindrome("racecar");
 
-            // Decimal to binary representation
-        const findBinary = (decimal, result) => {
-            if (decimal < 1) {
-                return result;
-            }
-            result = Math.floor(decimal % 2) + result;
-            return findBinary(decimal / 2, result);
-        };
 
-        let binaryResult = findBinary(233, "");
-        console.log(binaryResult);
+
+        // Decimal to binary representation
+        // const findBinary = (decimal, result) => {
+        //     if (decimal < 1) {
+        //         return result;
+        //     }
+        //     result = Math.floor(decimal % 2) + result;
+        //     return findBinary(decimal / 2, result);
+        // };
+
+        // let binaryResult = findBinary(233, "");
+        // console.log(binaryResult);
+
+
+        // Sum of natural numbers
+        // const sumOfNaturalsNumbers = (num) =>{
+        //     if(num <= 1){
+        //         return num;
+        //     }
+        //     return num + sumOfNaturalsNumbers(num - 1); 
+        // }
+        // let total = sumOfNaturalsNumbers(5);
+        // console.log(total);
+
+        // Fibonacci number
+        // const fib = (n) => {
+        //     if(n == 0 || n == 1){
+        //         return n;
+        //     }
+
+        //     return fib(n - 1) + fib(n - 2);
+        // };
+        // let fibonacciResult = fib(5);
+        // console.log(fibonacciResult);
+
+
     </script>
 </body>
 </html>
